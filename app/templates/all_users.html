@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>All Registered Users</h1>
+
+{% if users %}
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Mobile</th>
+            <th>Membership ID</th>
+            <th>Joined Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.age }}</td>
+            <td>{{ user.mobile_number }}</td>
+            <td>{{ user.membership_id }}</td>
+            <td>{{ user.registration_date.strftime('%Y-%m-%d') }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p style="text-align: center;">No users registered yet.</p>
+{% endif %}
+
+<div style="text-align: center; margin-top: 20px;">
+    <a href="{{ url_for('admin.dashboard') }}" class="btn">Back to Dashboard</a>
+</div>
+{% endblock %}

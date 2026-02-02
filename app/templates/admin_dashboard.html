@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Admin Dashboard</h1>
+
+<div class="stats-grid">
+    <div class="stat-card">
+        <h3>Total Registrations</h3>
+        <div class="stat-number">{{ total_registrations }}</div>
+    </div>
+    <div class="stat-card">
+        <h3>Entries ({{ filter_date.strftime('%Y-%m-%d') }})</h3>
+        <div class="stat-number">{{ daily_entry_count }}</div>
+    </div>
+</div>
+
+<form method="GET" action="{{ url_for('admin.dashboard') }}"
+    style="flex-direction: row; align-items: center; justify-content: center;">
+    <label for="date" style="margin-right: 10px;">Filter Date:</label>
+    <input type="date" id="date" name="date" value="{{ filter_date.strftime('%Y-%m-%d') }}">
+    <button type="submit" style="margin-left: 10px;">Filter</button>
+</form>
+
+<h2>Entries on {{ filter_date.strftime('%Y-%m-%d') }}</h2>
+{% if entries_today %}
+<table>
+    <thead>
+        <tr>
+            <th>Time</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Membership ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in entries_today %}
+        <tr>
+            <td>{{ entry.entry_time.strftime('%H:%M:%S') }}</td>
+            <td>{{ entry.user.name }}</td>
+            <td>{{ entry.user.mobile_number }}</td>
+            <td>{{ entry.user.membership_id }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p style="text-align: center;">No entries found for this date.</p>
+{% endif %}
+
+<h2>Users Not Entered Today</h2>
+{% if not_entered_today %}
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Membership ID</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in not_entered_today %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.mobile_number }}</td>
+            <td>{{ user.membership_id }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p style="text-align: center;">All registered users have entered today (or no users exist).</p>
+{% endif %}
+
+{% endblock %}

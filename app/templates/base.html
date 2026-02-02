@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bunny's Access System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">Bunny's</div>
+        <div class="nav-links">
+            {% if session.get('admin_logged_in') %}
+            <a href="{{ url_for('admin.dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('admin.view_qr_codes') }}">QR Codes</a>
+            <a href="{{ url_for('admin.all_users') }}">All Users</a>
+            <a href="{{ url_for('auth.logout') }}">Logout</a>
+            {% else %}
+            <a href="{{ url_for('auth.login') }}">Admin Login</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="flashes">
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+
+</html>

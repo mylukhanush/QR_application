@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>QR Codes</h1>
+<p style="text-align: center;">Scan these codes with your mobile phone to Register or Check-In.</p>
+
+<div style="display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 30px;">
+
+    <div style="text-align: center; border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
+        <h2>1. Registration</h2>
+        <img src="{{ url_for('static', filename='registration_qr.png') }}" alt="Registration QR" width="250"
+            style="margin: 10px 0;">
+        <p>Use this one-time to register new members.</p>
+        <a href="{{ url_for('static', filename='registration_qr.png') }}" download class="btn"
+            style="display:inline-block; margin-top:10px; text-decoration:none; background:#2c3e50; color:white; padding:8px 15px; border-radius:4px;">Download
+            Image</a>
+    </div>
+
+    <div style="text-align: center; border: 1px solid #ddd; padding: 20px; border-radius: 8px;">
+        <h2>2. Check-In</h2>
+        <img src="{{ url_for('static', filename='entry_qr.png') }}" alt="Check-In QR" width="250"
+            style="margin: 10px 0;">
+        <p>Members scan this daily to enter.</p>
+        <a href="{{ url_for('static', filename='entry_qr.png') }}" download class="btn"
+            style="display:inline-block; margin-top:10px; text-decoration:none; background:#2c3e50; color:white; padding:8px 15px; border-radius:4px;">Download
+            Image</a>
+    </div>
+
+</div>
+{% endblock %}

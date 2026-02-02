@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Member Registration</h1>
+<form method="POST" action="{{ url_for('main.register') }}">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" name="name" required placeholder="John Doe">
+
+    <label for="age">Age</label>
+    <input type="number" id="age" name="age" required min="1" max="120" placeholder="25">
+
+    <label for="mobile">Mobile Number (Unique)</label>
+    <input type="tel" id="mobile" name="mobile" required placeholder="1234567890" pattern="[0-9]{10,15}">
+
+    <button type="submit">Register Member</button>
+</form>
+{% endblock %}

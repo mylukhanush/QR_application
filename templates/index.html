@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Gym QR Application{% endblock %}
+
+{% block content %}
+<div class="home-container">
+    <div class="hero-section">
+        <h1>Welcome to Gym QR System</h1>
+        <p>Seamless Registration and Check-in via QR Codes</p>
+    </div>
+
+    <div class="cards-grid">
+        <div class="card">
+            <div class="card-icon">📝</div>
+            <h2>New Member?</h2>
+            <p>Scan the Registration QR code to create your gym profile in seconds</p>
+            <a href="{{ url_for('registration.register') }}" class="btn btn-primary">Register Now</a>
+            <a href="{{ url_for('registration.qr_display') }}" class="btn btn-secondary">View QR Code</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">🔐</div>
+            <h2>Check In</h2>
+            <p>Scan the Entry QR code to record your gym visit and track your workouts</p>
+            <a href="{{ url_for('entry.verify_entry') }}" class="btn btn-primary">Check In Now</a>
+            <a href="{{ url_for('entry.qr_display') }}" class="btn btn-secondary">View QR Code</a>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">📊</div>
+            <h2>Admin Panel</h2>
+            <p>View member registrations, entry logs, and gym statistics</p>
+            <a href="{{ url_for('admin.login') }}" class="btn btn-primary">Admin Login</a>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h2>How It Works</h2>
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Register</h3>
+                <p>Scan the registration QR code and fill in your details</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Get Membership ID</h3>
+                <p>Receive your unique membership ID instantly</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Check In</h3>
+                <p>Scan entry QR code and verify with mobile or membership ID</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Track Visits</h3>
+                <p>Admin can view all entries and member statistics</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

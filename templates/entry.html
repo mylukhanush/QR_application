@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Check In - Gym QR Application{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <div class="form-card">
+        <h2>Gym Check In</h2>
+        <p class="form-description">Verify your registration to check in</p>
+
+        <form method="POST" class="entry-form">
+            <div class="entry-info">
+                <p>Provide ONE of the following to verify your registration:</p>
+            </div>
+
+            <div class="form-group">
+                <label for="mobile_number">Mobile Number</label>
+                <input 
+                    type="tel" 
+                    id="mobile_number" 
+                    name="mobile_number" 
+                    placeholder="Enter your registered mobile number"
+                    maxlength="15"
+                >
+                <small>OR use Membership ID below</small>
+            </div>
+
+            <div class="form-divider">
+                <span>OR</span>
+            </div>
+
+            <div class="form-group">
+                <label for="membership_id">Membership ID</label>
+                <input 
+                    type="text" 
+                    id="membership_id" 
+                    name="membership_id" 
+                    placeholder="Enter your membership ID (e.g., MEM-12345)"
+                    maxlength="20"
+                >
+                <small>OR use Mobile Number above</small>
+            </div>
+
+            <button type="submit" class="btn btn-submit">Check In</button>
+        </form>
+
+        <div class="form-info">
+            <p><strong>IMPORTANT:</strong></p>
+            <ul>
+                <li>You must be registered to check in</li>
+                <li>You can only check in once per day</li>
+                <li>Attempting to check in again today will show a warning</li>
+                <li>If not registered, you must register first</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="info-card">
+        <h3>Check-In Rules</h3>
+        <ul class="benefits-list">
+            <li>✓ One check-in per day per member</li>
+            <li>✓ Verify with Mobile or Membership ID</li>
+            <li>✓ Instant verification</li>
+            <li>✓ Entry logged automatically</li>
+            <li>✓ No unregistered users allowed</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

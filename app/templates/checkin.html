@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Member Check-In</h1>
+<p style="text-align: center;">Please enter your Mobile Number or Membership ID to enter.</p>
+
+<form method="POST" action="{{ url_for('main.checkin') }}">
+    <label for="identifier">Mobile or Membership ID</label>
+    <input type="text" id="identifier" name="identifier" required placeholder="Enter Mobile No. or ID">
+
+    <button type="submit">Verify & Enter</button>
+</form>
+{% endblock %}
